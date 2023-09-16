@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:shamo/pages/widgets/product_card.dart';
+import 'package:shamo/pages/widgets/product_tile.dart';
 import 'package:shamo/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -199,12 +200,45 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget newArrivalsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'New Arrivals',
+          style: primaryTextStyle.copyWith(
+            fontSize: 22,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget newArrivals() {
+      return Container(
+        margin: EdgeInsets.only(top: 14),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
         categories(),
         popularProductsTitle(),
         popularProducts(),
+        newArrivalsTitle(),
+        newArrivals(),
       ],
     );
   }
