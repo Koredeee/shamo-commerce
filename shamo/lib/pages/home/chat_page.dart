@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:shamo/pages/widgets/chat_tile.dart';
 import 'package:shamo/theme.dart';
 
 class ChatPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class ChatPage extends StatelessWidget {
       );
     }
 
-    Widget content() {
+    Widget emptyChat() {
       // pake Expanded karena sisa dari space akan di-isi dengan  content section
       return Expanded(
           child: Container(
@@ -38,7 +39,7 @@ class ChatPage extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    'Opps no message yet?',
+                    'Oops no message yet?',
                     style: primaryTextStyle.copyWith(
                         fontSize: 16, fontWeight: medium),
                   ),
@@ -73,6 +74,21 @@ class ChatPage extends StatelessWidget {
                   ),
                 ],
               )));
+    }
+
+    Widget content() {
+      // pake Expanded karena sisa dari space akan di-isi dengan  content section
+      return Expanded(
+        child: Container(
+            width: double.infinity,
+            color: backgroundColor3,
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              children: [
+                ChatTile(),
+              ],
+            )),
+      );
     }
 
     return Column(
