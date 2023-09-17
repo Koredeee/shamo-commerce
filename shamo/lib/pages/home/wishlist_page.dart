@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:shamo/theme.dart';
 
 class WishlistPage extends StatelessWidget {
   const WishlistPage({super.key});
@@ -8,7 +9,7 @@ class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Wishlist Page'),
+      child: Text('Wishlist Page', style: primaryTextStyle),
     );
   }
 }
