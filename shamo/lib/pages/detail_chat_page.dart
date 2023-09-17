@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:shamo/pages/widgets/chat_bubble.dart';
@@ -136,6 +136,7 @@ class DetailChatPage extends StatelessWidget {
           ChatBubble(
             isSender: true,
             text: 'Hi, This item is still available?',
+            hasProduct: true,
           ),
           ChatBubble(
             isSender: false,
