@@ -1,8 +1,31 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:shamo/theme.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
+
+  PreferredSizeWidget header(BuildContext context) {
+    return AppBar(
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(Icons.close),
+      ),
+      backgroundColor: backgroundColor1,
+      elevation: 0,
+      centerTitle: true,
+      title: Text('Edit Profile'),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.check, color: primaryColor),
+        )
+      ],
+    );
+  }
 
   Widget nameInput() {
     return Container(
@@ -110,24 +133,7 @@ class EditProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor3,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.close),
-        ),
-        backgroundColor: backgroundColor1,
-        elevation: 0,
-        centerTitle: true,
-        title: Text('Edit Profile'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.check, color: primaryColor),
-          )
-        ],
-      ),
+      appBar: header(context),
       body: content(),
       resizeToAvoidBottomInset: false,
     );
