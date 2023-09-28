@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:shamo/pages/widgets/cart_card.dart';
 import 'package:shamo/theme.dart';
 
 class CartPage extends StatelessWidget {
@@ -55,12 +56,74 @@ class CartPage extends StatelessWidget {
     );
   }
 
+  Widget content() {
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+      children: [CartCard()],
+    );
+  }
+
+  Widget customButtonNav() {
+    return Container(
+      height: 190,
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Subtotal', style: primaryTextStyle),
+                Text(
+                  '\$287,96',
+                  style: priceTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: semiBold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
+          Divider(thickness: 0.3, color: subtitleColor),
+          SizedBox(height: 30),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            height: 50,
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: primaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Continue to Checkout',
+                    style: primaryTextStyle.copyWith(
+                        fontSize: 16, fontWeight: semiBold),
+                  ),
+                  Icon(Icons.arrow_forward, color: primaryTextColor)
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
-      body: emptyCart(context),
+      body: content(),
+      bottomNavigationBar: customButtonNav(),
     );
   }
 }
