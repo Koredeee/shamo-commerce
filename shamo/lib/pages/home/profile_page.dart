@@ -6,7 +6,7 @@ import 'package:shamo/theme.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  Widget header() {
+  Widget header(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor1,
       automaticallyImplyLeading: false,
@@ -37,7 +37,12 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset('assets/button_exit.png', width: 20)
+              GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/sign-in', (route) => false);
+                  },
+                  child: Image.asset('assets/button_exit.png', width: 20))
             ],
           ),
         ),
@@ -64,7 +69,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget content() {
+  Widget content(BuildContext context) {
     return Expanded(
         child: Container(
       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
@@ -80,7 +85,11 @@ class ProfilePage extends StatelessWidget {
             style:
                 primaryTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),
           ),
-          menuItem('Edit Profile'),
+          GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/edit-profile');
+              },
+              child: menuItem('Edit Profile')),
           menuItem('Your Orders'),
           menuItem('Help'),
           SizedBox(
@@ -103,8 +112,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        header(),
-        content(),
+        header(context),
+        content(context),
       ],
     );
   }
