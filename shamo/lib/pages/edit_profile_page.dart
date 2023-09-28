@@ -65,7 +65,7 @@ class EditProfilePage extends StatelessWidget {
           TextFormField(
             style: primaryTextStyle,
             decoration: InputDecoration(
-              hintText: '@asepsurasep',
+              hintText: '@asepkyun',
               hintStyle: primaryTextStyle,
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: subtitleColor),

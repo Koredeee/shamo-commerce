@@ -16,7 +16,7 @@ class CheckoutPage extends StatelessWidget {
     );
   }
 
-  Widget content() {
+  Widget content(BuildContext context) {
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
       children: [
@@ -190,11 +190,15 @@ class CheckoutPage extends StatelessWidget {
           height: 50,
           margin: EdgeInsets.symmetric(vertical: defaultMargin),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/checkout-success', (route) => false);
+            },
             style: TextButton.styleFrom(
               backgroundColor: primaryColor,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),),
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
             child: Text(
               'Checkout Now',
@@ -212,7 +216,7 @@ class CheckoutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
-      body: content(),
+      body: content(context),
     );
   }
 }
