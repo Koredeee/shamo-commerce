@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:shamo/pages/widgets/cart_card.dart';
@@ -59,11 +59,15 @@ class CartPage extends StatelessWidget {
   Widget content() {
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-      children: [CartCard()],
+      children: [
+        CartCard(),
+        CartCard(),
+        CartCard(),
+      ],
     );
   }
 
-  Widget customButtonNav() {
+  Widget customButtonNav(BuildContext context) {
     return Container(
       height: 190,
       child: Column(
@@ -91,7 +95,9 @@ class CartPage extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             height: 50,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/checkout');
+              },
               style: TextButton.styleFrom(
                 backgroundColor: primaryColor,
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -123,7 +129,7 @@ class CartPage extends StatelessWidget {
       backgroundColor: backgroundColor3,
       appBar: header(),
       body: content(),
-      bottomNavigationBar: customButtonNav(),
+      bottomNavigationBar: customButtonNav(context),
     );
   }
 }
